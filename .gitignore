@@ -4,6 +4,8 @@ Data
 # swap/tmp files
 .*.swp
 tmp
+.Rhistory
+.Rproj.user
 
 # snakemake/wbuild
 .snakemake
@@ -116,4 +118,3 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-.Rproj.user
