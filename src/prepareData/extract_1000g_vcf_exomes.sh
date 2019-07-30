@@ -17,7 +17,7 @@ cadd_dir=/s/genomes/human/hg19/CADD/v1.3
 annoFile="$(dirname ${outDir})/annotation.tsv"
 
 # default variables
-chrOfInt=`echo chr{1..21} chrX chrY`
+chrOfInt=`echo chr{1..21} chrX`
 vcfFileSuffix="phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"
 wes_regions_ensembl="${wes_regions%%.bed}_ensembl.bed"
 
@@ -65,5 +65,12 @@ vep --cache --dir_cache $vep_cache_dir --port 3337 --force_overwrite \
     --format vcf --vcf --filter_common --biotype --failed 1 \
     --input_file $outDir/1000G_subset_exome.vcf.gz \
     --output_file $outDir/1000G_subset_exome.vep.vcf.gz
+tabix $outDir/1000G_subset_exome.vep.vcf.gz
+
+# copy it to our webserver if present
+if [ -e "/s/public_webshare/public/workshops/RNAseq_ASHG19/input_data/variants/" ]; then
+    cp $outDir/1000G*vcf.gz $outDir/1000G*vcf.gz.tbi \
+        /s/public_webshare/public/workshops/RNAseq_ASHG19/input_data/variants/
+fi
 
 
