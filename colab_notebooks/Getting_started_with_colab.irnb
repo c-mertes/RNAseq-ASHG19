@@ -1,0 +1,600 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Setup R for RNA-seq @ ASHG19",
+      "version": "0.3.2",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    },
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/c-mertes/RNAseq-ASHG19/blob/master/colab_notebooks/Getting_started_with_colab.irnb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "zpKzgRL8PTxG",
+        "colab_type": "text"
+      },
+      "source": [
+        "# Set up VM for RNA-seq workshop @ ASHG19 (R-env)\n",
+        "\n",
+        "This will only setup the R/Bioconductor environment.\n",
+        "\n",
+        "This script will install all the packages needed to run the notebooks and zips the data to restore it later for the participants in the workshop to start up the VM faster.\n",
+        "\n",
+        "The problem is that the VM is restarted after 12 hours or after 1 hour idle time. Hence one would have to reinstall all the software which can take up 10-20 minutes.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RH09sYgJP5tC",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Setup R environment"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QrGOQwehg3Rj",
+        "colab_type": "text"
+      },
+      "source": [
+        "Install devel packages needed to compile R-packages"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yeoEUCurgyX_",
+        "colab_type": "code",
+        "outputId": "5ebf5fb3-ba88-44ab-cfaf-2ff6af61dd7f",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 725
+        }
+      },
+      "source": [
+        "system(\"apt install -y libmysqlclient-dev libudunits2-dev libgeos-dev libgdal-dev libcairo2-dev\", intern=TRUE)"
+      ],
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              " [1] \"Reading package lists...\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n",
+              " [2] \"Building dependency tree...\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   \n",
+              " [3] \"Reading state information...\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \n",
+              " [4] \"libgdal-dev is already the newest version (2.2.3+dfsg-2).\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \n",
+              " [5] \"libgeos-dev is already the newest version (3.6.2-1build2).\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \n",
+              " [6] \"libudunits2-dev is already the newest version (2.2.26-1).\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \n",
+              " [7] \"libmysqlclient-dev is already the newest version (5.7.27-0ubuntu0.18.04.1).\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   \n",
+              " [8] \"The following additional packages will be installed:\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \n",
+              " [9] \"  libcairo-script-interpreter2 libpixman-1-dev libxcb-shm0-dev\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \n",
+              "[10] \"Suggested packages:\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \n",
+              "[11] \"  libcairo2-doc\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \n",
+              "[12] \"The following NEW packages will be installed:\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \n",
+              "[13] \"  libcairo-script-interpreter2 libcairo2-dev libpixman-1-dev libxcb-shm0-dev\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \n",
+              "[14] \"0 upgraded, 4 newly installed, 0 to remove and 8 not upgraded.\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \n",
+              "[15] \"Need to get 930 kB of archives.\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \n",
+              "[16] \"After this operation, 3,986 kB of additional disk space will be used.\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \n",
+              "[17] \"Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo-script-interpreter2 amd64 1.15.10-2ubuntu0.1 [53.5 kB]\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \n",
+              "[18] \"Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpixman-1-dev amd64 0.34.0-2 [244 kB]\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \n",
+              "[19] \"Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-shm0-dev amd64 1.13-2~ubuntu18.04 [6,684 B]\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \n",
+              "[20] \"Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo2-dev amd64 1.15.10-2ubuntu0.1 [626 kB]\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \n",
+              "[21] \"Fetched 930 kB in 2s (451 kB/s)\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \n",
+              "[22] \"Selecting previously unselected package libcairo-script-interpreter2:amd64.\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \n",
+              "[23] \"(Reading database ... \\r(Reading database ... 5%\\r(Reading database ... 10%\\r(Reading database ... 15%\\r(Reading database ... 20%\\r(Reading database ... 25%\\r(Reading database ... 30%\\r(Reading database ... 35%\\r(Reading database ... 40%\\r(Reading database ... 45%\\r(Reading database ... 50%\\r(Reading database ... 55%\\r(Reading database ... 60%\\r(Reading database ... 65%\\r(Reading database ... 70%\\r(Reading database ... 75%\\r(Reading database ... 80%\\r(Reading database ... 85%\\r(Reading database ... 90%\\r(Reading database ... 95%\\r(Reading database ... 100%\\r(Reading database ... 133741 files and directories currently installed.)\\r\"\n",
+              "[24] \"Preparing to unpack .../libcairo-script-interpreter2_1.15.10-2ubuntu0.1_amd64.deb ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       \n",
+              "[25] \"Unpacking libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       \n",
+              "[26] \"Selecting previously unselected package libpixman-1-dev:amd64.\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \n",
+              "[27] \"Preparing to unpack .../libpixman-1-dev_0.34.0-2_amd64.deb ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \n",
+              "[28] \"Unpacking libpixman-1-dev:amd64 (0.34.0-2) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \n",
+              "[29] \"Selecting previously unselected package libxcb-shm0-dev:amd64.\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \n",
+              "[30] \"Preparing to unpack .../libxcb-shm0-dev_1.13-2~ubuntu18.04_amd64.deb ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \n",
+              "[31] \"Unpacking libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \n",
+              "[32] \"Selecting previously unselected package libcairo2-dev:amd64.\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \n",
+              "[33] \"Preparing to unpack .../libcairo2-dev_1.15.10-2ubuntu0.1_amd64.deb ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n",
+              "[34] \"Unpacking libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n",
+              "[35] \"Setting up libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \n",
+              "[36] \"Setting up libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   \n",
+              "[37] \"Processing triggers for libc-bin (2.27-3ubuntu1) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        \n",
+              "[38] \"Setting up libpixman-1-dev:amd64 (0.34.0-2) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \n",
+              "[39] \"Setting up libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\r\"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     "
+            ],
+            "text/latex": "\\begin{enumerate*}\n\\item 'Reading package lists...'\n\\item 'Building dependency tree...'\n\\item 'Reading state information...'\n\\item 'libgdal-dev is already the newest version (2.2.3+dfsg-2).'\n\\item 'libgeos-dev is already the newest version (3.6.2-1build2).'\n\\item 'libudunits2-dev is already the newest version (2.2.26-1).'\n\\item 'libmysqlclient-dev is already the newest version (5.7.27-0ubuntu0.18.04.1).'\n\\item 'The following additional packages will be installed:'\n\\item '  libcairo-script-interpreter2 libpixman-1-dev libxcb-shm0-dev'\n\\item 'Suggested packages:'\n\\item '  libcairo2-doc'\n\\item 'The following NEW packages will be installed:'\n\\item '  libcairo-script-interpreter2 libcairo2-dev libpixman-1-dev libxcb-shm0-dev'\n\\item '0 upgraded, 4 newly installed, 0 to remove and 8 not upgraded.'\n\\item 'Need to get 930 kB of archives.'\n\\item 'After this operation, 3,986 kB of additional disk space will be used.'\n\\item 'Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo-script-interpreter2 amd64 1.15.10-2ubuntu0.1 {[}53.5 kB{]}'\n\\item 'Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpixman-1-dev amd64 0.34.0-2 {[}244 kB{]}'\n\\item 'Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-shm0-dev amd64 1.13-2\\textasciitilde{}ubuntu18.04 {[}6,684 B{]}'\n\\item 'Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo2-dev amd64 1.15.10-2ubuntu0.1 {[}626 kB{]}'\n\\item 'Fetched 930 kB in 2s (451 kB/s)'\n\\item 'Selecting previously unselected package libcairo-script-interpreter2:amd64.\\textbackslash{}r'\n\\item '(Reading database ... \\textbackslash{}r(Reading database ... 5\\%\\textbackslash{}r(Reading database ... 10\\%\\textbackslash{}r(Reading database ... 15\\%\\textbackslash{}r(Reading database ... 20\\%\\textbackslash{}r(Reading database ... 25\\%\\textbackslash{}r(Reading database ... 30\\%\\textbackslash{}r(Reading database ... 35\\%\\textbackslash{}r(Reading database ... 40\\%\\textbackslash{}r(Reading database ... 45\\%\\textbackslash{}r(Reading database ... 50\\%\\textbackslash{}r(Reading database ... 55\\%\\textbackslash{}r(Reading database ... 60\\%\\textbackslash{}r(Reading database ... 65\\%\\textbackslash{}r(Reading database ... 70\\%\\textbackslash{}r(Reading database ... 75\\%\\textbackslash{}r(Reading database ... 80\\%\\textbackslash{}r(Reading database ... 85\\%\\textbackslash{}r(Reading database ... 90\\%\\textbackslash{}r(Reading database ... 95\\%\\textbackslash{}r(Reading database ... 100\\%\\textbackslash{}r(Reading database ... 133741 files and directories currently installed.)\\textbackslash{}r'\n\\item 'Preparing to unpack .../libcairo-script-interpreter2\\_1.15.10-2ubuntu0.1\\_amd64.deb ...\\textbackslash{}r'\n\\item 'Unpacking libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\textbackslash{}r'\n\\item 'Selecting previously unselected package libpixman-1-dev:amd64.\\textbackslash{}r'\n\\item 'Preparing to unpack .../libpixman-1-dev\\_0.34.0-2\\_amd64.deb ...\\textbackslash{}r'\n\\item 'Unpacking libpixman-1-dev:amd64 (0.34.0-2) ...\\textbackslash{}r'\n\\item 'Selecting previously unselected package libxcb-shm0-dev:amd64.\\textbackslash{}r'\n\\item 'Preparing to unpack .../libxcb-shm0-dev\\_1.13-2\\textasciitilde{}ubuntu18.04\\_amd64.deb ...\\textbackslash{}r'\n\\item 'Unpacking libxcb-shm0-dev:amd64 (1.13-2\\textasciitilde{}ubuntu18.04) ...\\textbackslash{}r'\n\\item 'Selecting previously unselected package libcairo2-dev:amd64.\\textbackslash{}r'\n\\item 'Preparing to unpack .../libcairo2-dev\\_1.15.10-2ubuntu0.1\\_amd64.deb ...\\textbackslash{}r'\n\\item 'Unpacking libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\textbackslash{}r'\n\\item 'Setting up libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\textbackslash{}r'\n\\item 'Setting up libxcb-shm0-dev:amd64 (1.13-2\\textasciitilde{}ubuntu18.04) ...\\textbackslash{}r'\n\\item 'Processing triggers for libc-bin (2.27-3ubuntu1) ...\\textbackslash{}r'\n\\item 'Setting up libpixman-1-dev:amd64 (0.34.0-2) ...\\textbackslash{}r'\n\\item 'Setting up libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\textbackslash{}r'\n\\end{enumerate*}\n",
+            "text/markdown": "1. 'Reading package lists...'\n2. 'Building dependency tree...'\n3. 'Reading state information...'\n4. 'libgdal-dev is already the newest version (2.2.3+dfsg-2).'\n5. 'libgeos-dev is already the newest version (3.6.2-1build2).'\n6. 'libudunits2-dev is already the newest version (2.2.26-1).'\n7. 'libmysqlclient-dev is already the newest version (5.7.27-0ubuntu0.18.04.1).'\n8. 'The following additional packages will be installed:'\n9. <span style=white-space:pre-wrap>'  libcairo-script-interpreter2 libpixman-1-dev libxcb-shm0-dev'</span>\n10. 'Suggested packages:'\n11. <span style=white-space:pre-wrap>'  libcairo2-doc'</span>\n12. 'The following NEW packages will be installed:'\n13. <span style=white-space:pre-wrap>'  libcairo-script-interpreter2 libcairo2-dev libpixman-1-dev libxcb-shm0-dev'</span>\n14. '0 upgraded, 4 newly installed, 0 to remove and 8 not upgraded.'\n15. 'Need to get 930 kB of archives.'\n16. 'After this operation, 3,986 kB of additional disk space will be used.'\n17. 'Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo-script-interpreter2 amd64 1.15.10-2ubuntu0.1 [53.5 kB]'\n18. 'Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpixman-1-dev amd64 0.34.0-2 [244 kB]'\n19. 'Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-shm0-dev amd64 1.13-2~ubuntu18.04 [6,684 B]'\n20. 'Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo2-dev amd64 1.15.10-2ubuntu0.1 [626 kB]'\n21. 'Fetched 930 kB in 2s (451 kB/s)'\n22. 'Selecting previously unselected package libcairo-script-interpreter2:amd64.\\r'\n23. '(Reading database ... \\r(Reading database ... 5%\\r(Reading database ... 10%\\r(Reading database ... 15%\\r(Reading database ... 20%\\r(Reading database ... 25%\\r(Reading database ... 30%\\r(Reading database ... 35%\\r(Reading database ... 40%\\r(Reading database ... 45%\\r(Reading database ... 50%\\r(Reading database ... 55%\\r(Reading database ... 60%\\r(Reading database ... 65%\\r(Reading database ... 70%\\r(Reading database ... 75%\\r(Reading database ... 80%\\r(Reading database ... 85%\\r(Reading database ... 90%\\r(Reading database ... 95%\\r(Reading database ... 100%\\r(Reading database ... 133741 files and directories currently installed.)\\r'\n24. 'Preparing to unpack .../libcairo-script-interpreter2_1.15.10-2ubuntu0.1_amd64.deb ...\\r'\n25. 'Unpacking libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\r'\n26. 'Selecting previously unselected package libpixman-1-dev:amd64.\\r'\n27. 'Preparing to unpack .../libpixman-1-dev_0.34.0-2_amd64.deb ...\\r'\n28. 'Unpacking libpixman-1-dev:amd64 (0.34.0-2) ...\\r'\n29. 'Selecting previously unselected package libxcb-shm0-dev:amd64.\\r'\n30. 'Preparing to unpack .../libxcb-shm0-dev_1.13-2~ubuntu18.04_amd64.deb ...\\r'\n31. 'Unpacking libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...\\r'\n32. 'Selecting previously unselected package libcairo2-dev:amd64.\\r'\n33. 'Preparing to unpack .../libcairo2-dev_1.15.10-2ubuntu0.1_amd64.deb ...\\r'\n34. 'Unpacking libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\r'\n35. 'Setting up libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\r'\n36. 'Setting up libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...\\r'\n37. 'Processing triggers for libc-bin (2.27-3ubuntu1) ...\\r'\n38. 'Setting up libpixman-1-dev:amd64 (0.34.0-2) ...\\r'\n39. 'Setting up libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\r'\n\n\n",
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'Reading package lists...'</li>\n",
+              "\t<li>'Building dependency tree...'</li>\n",
+              "\t<li>'Reading state information...'</li>\n",
+              "\t<li>'libgdal-dev is already the newest version (2.2.3+dfsg-2).'</li>\n",
+              "\t<li>'libgeos-dev is already the newest version (3.6.2-1build2).'</li>\n",
+              "\t<li>'libudunits2-dev is already the newest version (2.2.26-1).'</li>\n",
+              "\t<li>'libmysqlclient-dev is already the newest version (5.7.27-0ubuntu0.18.04.1).'</li>\n",
+              "\t<li>'The following additional packages will be installed:'</li>\n",
+              "\t<li><span style=white-space:pre-wrap>'  libcairo-script-interpreter2 libpixman-1-dev libxcb-shm0-dev'</span></li>\n",
+              "\t<li>'Suggested packages:'</li>\n",
+              "\t<li><span style=white-space:pre-wrap>'  libcairo2-doc'</span></li>\n",
+              "\t<li>'The following NEW packages will be installed:'</li>\n",
+              "\t<li><span style=white-space:pre-wrap>'  libcairo-script-interpreter2 libcairo2-dev libpixman-1-dev libxcb-shm0-dev'</span></li>\n",
+              "\t<li>'0 upgraded, 4 newly installed, 0 to remove and 8 not upgraded.'</li>\n",
+              "\t<li>'Need to get 930 kB of archives.'</li>\n",
+              "\t<li>'After this operation, 3,986 kB of additional disk space will be used.'</li>\n",
+              "\t<li>'Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo-script-interpreter2 amd64 1.15.10-2ubuntu0.1 [53.5 kB]'</li>\n",
+              "\t<li>'Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpixman-1-dev amd64 0.34.0-2 [244 kB]'</li>\n",
+              "\t<li>'Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-shm0-dev amd64 1.13-2~ubuntu18.04 [6,684 B]'</li>\n",
+              "\t<li>'Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo2-dev amd64 1.15.10-2ubuntu0.1 [626 kB]'</li>\n",
+              "\t<li>'Fetched 930 kB in 2s (451 kB/s)'</li>\n",
+              "\t<li>'Selecting previously unselected package libcairo-script-interpreter2:amd64.\\r'</li>\n",
+              "\t<li>'(Reading database ... \\r(Reading database ... 5%\\r(Reading database ... 10%\\r(Reading database ... 15%\\r(Reading database ... 20%\\r(Reading database ... 25%\\r(Reading database ... 30%\\r(Reading database ... 35%\\r(Reading database ... 40%\\r(Reading database ... 45%\\r(Reading database ... 50%\\r(Reading database ... 55%\\r(Reading database ... 60%\\r(Reading database ... 65%\\r(Reading database ... 70%\\r(Reading database ... 75%\\r(Reading database ... 80%\\r(Reading database ... 85%\\r(Reading database ... 90%\\r(Reading database ... 95%\\r(Reading database ... 100%\\r(Reading database ... 133741 files and directories currently installed.)\\r'</li>\n",
+              "\t<li>'Preparing to unpack .../libcairo-script-interpreter2_1.15.10-2ubuntu0.1_amd64.deb ...\\r'</li>\n",
+              "\t<li>'Unpacking libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\r'</li>\n",
+              "\t<li>'Selecting previously unselected package libpixman-1-dev:amd64.\\r'</li>\n",
+              "\t<li>'Preparing to unpack .../libpixman-1-dev_0.34.0-2_amd64.deb ...\\r'</li>\n",
+              "\t<li>'Unpacking libpixman-1-dev:amd64 (0.34.0-2) ...\\r'</li>\n",
+              "\t<li>'Selecting previously unselected package libxcb-shm0-dev:amd64.\\r'</li>\n",
+              "\t<li>'Preparing to unpack .../libxcb-shm0-dev_1.13-2~ubuntu18.04_amd64.deb ...\\r'</li>\n",
+              "\t<li>'Unpacking libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...\\r'</li>\n",
+              "\t<li>'Selecting previously unselected package libcairo2-dev:amd64.\\r'</li>\n",
+              "\t<li>'Preparing to unpack .../libcairo2-dev_1.15.10-2ubuntu0.1_amd64.deb ...\\r'</li>\n",
+              "\t<li>'Unpacking libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\r'</li>\n",
+              "\t<li>'Setting up libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...\\r'</li>\n",
+              "\t<li>'Setting up libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...\\r'</li>\n",
+              "\t<li>'Processing triggers for libc-bin (2.27-3ubuntu1) ...\\r'</li>\n",
+              "\t<li>'Setting up libpixman-1-dev:amd64 (0.34.0-2) ...\\r'</li>\n",
+              "\t<li>'Setting up libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...\\r'</li>\n",
+              "</ol>\n"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "tQPQq9SLhBtL",
+        "colab_type": "text"
+      },
+      "source": [
+        "Create user R library directory and install BiocManager"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "8VMmXh9UFGlF",
+        "colab_type": "code",
+        "outputId": "3025fca1-71a9-4d14-9c0f-bad106e4ab88",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "R_LIBS_USER <- Sys.getenv(\"R_LIBS_USER\")\n",
+        ".libPaths(R_LIBS_USER)\n",
+        "print(R_LIBS_USER)\n",
+        "\n",
+        "if(!dir.exists(R_LIBS_USER))\n",
+        "    dir.create(R_LIBS_USER, recursive=TRUE)\n",
+        "if(!requireNamespace(\"BiocManager\", quietly=TRUE))\n",
+        "    install.packages(\"BiocManager\", lib=R_LIBS_USER)"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[1] \"~/R/x86_64-pc-linux-gnu-library/3.6\"\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QdLm_m9nZJz-",
+        "colab_type": "text"
+      },
+      "source": [
+        "Update current installed packages"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "QadKNEHUTVZ5",
+        "colab_type": "code",
+        "outputId": "3c6efb9f-0623-4ff0-8434-dfa614ceef6f",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 68
+        }
+      },
+      "source": [
+        "BiocManager::install(Ncpus=10, update=TRUE, upgrade=TRUE, ask=FALSE)\n",
+        "BiocManager::valid()"
+      ],
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Bioconductor version 3.9 (BiocManager 1.30.4), R 3.6.1 (2019-07-05)\n",
+            "Update old packages: 'gdtools'\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "[1] TRUE"
+            ],
+            "text/latex": "TRUE",
+            "text/markdown": "TRUE",
+            "text/html": [
+              "TRUE"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bOwVgeFOIqJz",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Install needed packages\n",
+        "\n",
+        "  * OUTRIDER\n",
+        "  * DESeq2\n",
+        "  * ggplot2\n",
+        "  * R.utils (needed for data.table to read gz files)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jEV1OOQCFJSH",
+        "colab_type": "code",
+        "outputId": "cc869a7f-3835-41b6-8004-168beca24339",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 190
+        }
+      },
+      "source": [
+        "packages <- c(\"OUTRIDER\", \"DESeq2\", \"ggplot2\", \"R.utils\")\n",
+        "BiocManager::install(Ncpus=10, ask=FALSE, upgrade=TRUE, lib=R_LIBS_USER)\n",
+        "for(p in packages)\n",
+        "    if(!requireNamespace(p, quietly=TRUE))\n",
+        "        BiocManager::install(p, lib=R_LIBS_USER,\n",
+        "                Ncpus=10, upgrade=TRUE, ask=FALSE,\n",
+        "                dependencies=TRUE)"
+      ],
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Bioconductor version 3.9 (BiocManager 1.30.4), R 3.6.1 (2019-07-05)\n",
+            "Bioconductor version 3.9 (BiocManager 1.30.4), R 3.6.1 (2019-07-05)\n",
+            "Installing package(s) 'OUTRIDER'\n",
+            "also installing the dependencies ‘formatR’, ‘bit’, ‘Rhtslib’, ‘lambda.r’, ‘futile.options’, ‘GenomeInfoDbData’, ‘bit64’, ‘blob’, ‘bitops’, ‘zlibbioc’, ‘XML’, ‘Rsamtools’, ‘GenomicAlignments’, ‘annotate’, ‘Formula’, ‘latticeExtra’, ‘acepack’, ‘htmlTable’, ‘viridis’, ‘futile.logger’, ‘snow’, ‘GenomeInfoDb’, ‘RSQLite’, ‘RCurl’, ‘XVector’, ‘Biostrings’, ‘rtracklayer’, ‘biomaRt’, ‘DelayedArray’, ‘checkmate’, ‘genefilter’, ‘locfit’, ‘geneplotter’, ‘Hmisc’, ‘ggrepel’, ‘ggsci’, ‘cowplot’, ‘ggsignif’, ‘gridExtra’, ‘polynom’, ‘gtools’, ‘gdata’, ‘caTools’, ‘hexbin’, ‘bookdown’, ‘BiocParallel’, ‘GenomicFeatures’, ‘SummarizedExperiment’, ‘data.table’, ‘BBmisc’, ‘Biobase’, ‘BiocGenerics’, ‘DESeq2’, ‘GenomicRanges’, ‘ggpubr’, ‘gplots’, ‘IRanges’, ‘matrixStats’, ‘plotly’, ‘pcaMethods’, ‘PRROC’, ‘reticulate’, ‘S4Vectors’, ‘RcppArmadillo’, ‘BiocStyle’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’, ‘org.Hs.eg.db’, ‘RMySQL’, ‘AnnotationDbi’, ‘beeswarm’\n",
+            "\n",
+            "Bioconductor version 3.9 (BiocManager 1.30.4), R 3.6.1 (2019-07-05)\n",
+            "Installing package(s) 'R.utils'\n",
+            "also installing the dependencies ‘R.oo’, ‘R.methodsS3’\n",
+            "\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "9OEZwTOCw1vc",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "x <- \"OUTRIDER\" \n",
+        "if(!requireNamespace(x))\n",
+        "     BiocManager::install(x, lib=R_LIBS_USER, Ncpus=10, ask=FALSE)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "N2ohy71yJGUa",
+        "colab_type": "text"
+      },
+      "source": [
+        "Check install folder and size of it."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "F4Plg1a8D919",
+        "colab_type": "code",
+        "outputId": "546ef920-4dc1-498d-9e8f-2691a2c37024",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 228
+        }
+      },
+      "source": [
+        "for(p in .libPaths()){\n",
+        "    message(p)\n",
+        "    message(\"Number of packages: \", length(list.files(p)))\n",
+        "    cat(system(paste(\"du -sh\", p), intern=TRUE), sep=\"\\n\")\n",
+        "}"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/root/R/x86_64-pc-linux-gnu-library/3.6\n",
+            "Number of packages: 158\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "1.3G\t/root/R/x86_64-pc-linux-gnu-library/3.6\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/R/site-library\n",
+            "Number of packages: 4\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "1.3M\t/usr/local/lib/R/site-library\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/lib/R/site-library\n",
+            "Number of packages: 107\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "293M\t/usr/lib/R/site-library\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/lib/R/library\n",
+            "Number of packages: 30\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "59M\t/usr/lib/R/library\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-5YK4UDJPumy",
+        "colab_type": "text"
+      },
+      "source": [
+        "Zip all R-library folders for export"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "X_9z1jGSPTxT",
+        "colab_type": "code",
+        "outputId": "0181b9bc-31ea-490d-db57-4a9d6cc65e2a",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 17
+        }
+      },
+      "source": [
+        "system(paste(\"tar -zcf r_binaries.tar.gz\", paste(.libPaths(), collapse=\" \")), intern=TRUE)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "character(0)"
+            ],
+            "text/latex": "",
+            "text/markdown": "",
+            "text/html": [
+              ""
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "aOGP40DJXKxc",
+        "colab_type": "code",
+        "outputId": "639a0ad5-1d3b-4c19-c2c7-2b287c09c444",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 200
+        }
+      },
+      "source": [
+        "system(\"ls -lha\", intern=TRUE)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "[1] \"total 764M\"                                                \n",
+              "[2] \"drwxr-xr-x 1 root root 4.0K Jul 27 12:43 .\"                \n",
+              "[3] \"drwxr-xr-x 1 root root 4.0K Jul 27 10:53 ..\"               \n",
+              "[4] \"drwxr-xr-x 2 root root 4.0K Jul 27 12:43 annotations\"      \n",
+              "[5] \"-rw-r--r-- 1 root root  11K Jul  2 13:51 annotation.tsv\"   \n",
+              "[6] \"drwxr-xr-x 1 root root 4.0K Jul 19 16:14 .config\"          \n",
+              "[7] \"drwxr-xr-x 2 root root 4.0K Jul 27 12:29 outrider\"         \n",
+              "[8] \"-rw-r--r-- 1 root root 764M Jul 27 12:36 r_binaries.tar.gz\"\n",
+              "[9] \"drwxr-xr-x 1 root root 4.0K Jul 19 16:14 sample_data\"      "
+            ],
+            "text/latex": "\\begin{enumerate*}\n\\item 'total 764M'\n\\item 'drwxr-xr-x 1 root root 4.0K Jul 27 12:43 .'\n\\item 'drwxr-xr-x 1 root root 4.0K Jul 27 10:53 ..'\n\\item 'drwxr-xr-x 2 root root 4.0K Jul 27 12:43 annotations'\n\\item '-rw-r--r-- 1 root root  11K Jul  2 13:51 annotation.tsv'\n\\item 'drwxr-xr-x 1 root root 4.0K Jul 19 16:14 .config'\n\\item 'drwxr-xr-x 2 root root 4.0K Jul 27 12:29 outrider'\n\\item '-rw-r--r-- 1 root root 764M Jul 27 12:36 r\\_binaries.tar.gz'\n\\item 'drwxr-xr-x 1 root root 4.0K Jul 19 16:14 sample\\_data'\n\\end{enumerate*}\n",
+            "text/markdown": "1. 'total 764M'\n2. 'drwxr-xr-x 1 root root 4.0K Jul 27 12:43 .'\n3. 'drwxr-xr-x 1 root root 4.0K Jul 27 10:53 ..'\n4. 'drwxr-xr-x 2 root root 4.0K Jul 27 12:43 annotations'\n5. <span style=white-space:pre-wrap>'-rw-r--r-- 1 root root  11K Jul  2 13:51 annotation.tsv'</span>\n6. 'drwxr-xr-x 1 root root 4.0K Jul 19 16:14 .config'\n7. 'drwxr-xr-x 2 root root 4.0K Jul 27 12:29 outrider'\n8. '-rw-r--r-- 1 root root 764M Jul 27 12:36 r_binaries.tar.gz'\n9. 'drwxr-xr-x 1 root root 4.0K Jul 19 16:14 sample_data'\n\n\n",
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'total 764M'</li>\n",
+              "\t<li>'drwxr-xr-x 1 root root 4.0K Jul 27 12:43 .'</li>\n",
+              "\t<li>'drwxr-xr-x 1 root root 4.0K Jul 27 10:53 ..'</li>\n",
+              "\t<li>'drwxr-xr-x 2 root root 4.0K Jul 27 12:43 annotations'</li>\n",
+              "\t<li><span style=white-space:pre-wrap>'-rw-r--r-- 1 root root  11K Jul  2 13:51 annotation.tsv'</span></li>\n",
+              "\t<li>'drwxr-xr-x 1 root root 4.0K Jul 19 16:14 .config'</li>\n",
+              "\t<li>'drwxr-xr-x 2 root root 4.0K Jul 27 12:29 outrider'</li>\n",
+              "\t<li>'-rw-r--r-- 1 root root 764M Jul 27 12:36 r_binaries.tar.gz'</li>\n",
+              "\t<li>'drwxr-xr-x 1 root root 4.0K Jul 19 16:14 sample_data'</li>\n",
+              "</ol>\n"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Rec2WYESrov2",
+        "colab_type": "text"
+      },
+      "source": [
+        "Now upload/copy  the **r_binaries.tar.gz** into you gdrive. Make sure you mounted it before through a python notebook since R does not support it right now.\n",
+        "\n",
+        "Here is a sample script which will mount your gdrive and upload it. We should also keep in gdrive since this will speed up the download into colab later on.\n",
+        "\n",
+        "```\n",
+        "# Mounting gdrive through python\n",
+        "from google.colab import drive\n",
+        "drive.mount('/content/gdrive')\n",
+        "\n",
+        "# copying files over to gdrive this could also be done in R\n",
+        "!mkdir -p /content/gdrive/My\\ Drive/work/workshops/RNA-seq-ASHG19/\n",
+        "!cp r_binaries.tar.gz /content/gdrive/My\\ Drive/work/workshops/RNA-seq-ASHG19/\n",
+        "```\n",
+        "\n",
+        "[You can use this snipped to run the code](https://colab.research.google.com/notebooks/snippets/drive.ipynb#scrollTo=hauvGV4hV-Mh)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "m2PsM6s7mlhN",
+        "colab_type": "code",
+        "outputId": "9ffd41ca-dbc8-48e7-9a74-aeaaa7b9b181",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 54
+        }
+      },
+      "source": [
+        "# copy file over\n",
+        "gdrive_path <- \"/content/gdrive/My Drive/work/workshops/RNA-seq-ASHG19/\"\n",
+        "if(!dir.exists(gdrive_path))\n",
+        "    dir.create(gdrive_path, recursive=TRUE)\n",
+        "file.copy(\"r_binaries.tar.gz\", gdrive_path, recursive=TRUE)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "[1] TRUE"
+            ],
+            "text/latex": "TRUE",
+            "text/markdown": "TRUE",
+            "text/html": [
+              "TRUE"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    }
+  ]
+}
