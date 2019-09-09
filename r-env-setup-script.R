@@ -8,6 +8,7 @@
 #' 
 
 #' install needed ubuntu packages
+message("Update and install needed Ubuntu packages")
 system("apt update")
 system("apt install -y libmysqlclient-dev libudunits2-dev libgeos-dev libgdal-dev libcairo2-dev")
 
@@ -23,12 +24,15 @@ downloadGDriveFile <- function(id, out){
 }
 
 #' R package cache (precompiled packages based on colab env)
+message("Download R package cache")
 downloadGDriveFile(out="r_binaries.tar.gz", id="1-VqZb_Cv63AH8ogWwhSp48DUowzv_GQf")
 
 #' Unpack cache locally
+message("Unzipping R package cache")
 system("tar -xzf r_binaries.tar.gz -C /", intern=TRUE)
 
 #' Download count matrix and sample annotation
+message("Retrieve data for tutorials")
 system("wget --continue https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/annotation.tsv")
 system("wget --continue -P outrider https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/outrider/raw_counts.tsv.gz")
 system("wget --continue -P annotations https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/annotations/gencode.v29lift37.annotation.txdb")
