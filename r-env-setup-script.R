@@ -36,6 +36,7 @@ message("Retrieve data for tutorials")
 system("wget --continue https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/annotation.tsv")
 system("wget --continue -P outrider https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/outrider/raw_counts.tsv.gz")
 system("wget --continue -P annotations https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/annotations/gencode.v29lift37.annotation.txdb")
+system("wget --continue -P mae https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/mae/allelic_counts.tsv")
 
 #' Set correct library path
 .libPaths(Sys.getenv("R_LIBS_USER"))
