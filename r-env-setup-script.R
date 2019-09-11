@@ -43,4 +43,4 @@ system("wget --continue -P mae https://i12g-gagneurweb.in.tum.de/public/workshop
 
 
 # Options to make plots smaller
-options(repr.plot.width = 3, repr.plot.height = 3)
+options(repr.plot.width=4, repr.plot.height=4)
