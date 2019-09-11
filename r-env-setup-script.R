@@ -40,3 +40,7 @@ system("wget --continue -P mae https://i12g-gagneurweb.in.tum.de/public/workshop
 
 #' Set correct library path
 .libPaths(Sys.getenv("R_LIBS_USER"))
+
+
+# Options to make plots smaller
+options(repr.plot.width = 3, repr.plot.height = 3)
