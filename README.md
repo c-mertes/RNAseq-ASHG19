@@ -39,3 +39,11 @@ If you are new to programming in R or to notebooks in general have a look into t
 * [Variant Prioritization]()
 * [Conclusion]()
 
+## Relevant presentations during ASHG2019
+
+Please post any relevant sessions, presentations, and posters on Slack or do a PR.
+
+* [Session E #63: RNAseq to Augment Variant Interpretation and Disease Diagnosis](https://eventpilotadmin.com/web/page.php?page=Session&project=ASHG19&id=163)
+* [Session #112: Exome and RNA-based Sequencing Methods for Variant Interpretation to Improve Clinical Utility](https://eventpilotadmin.com/web/page.php?page=Session&project=ASHG19&id=212)
+* [FraseR: A statistical method to detect aberrant splicing events in RNA-seq data](https://eventpilotadmin.com/web/page.php?page=IntHtml&project=ASHG19&id=1922872)
+
