@@ -1,4 +1,4 @@
-RNA-seq for Mendelian disease diagnostics: A hands-on tutorial through bioinformatic tools and workflowsT
+RNA-seq for Mendelian disease diagnostics: A hands-on tutorial through bioinformatic tools and workflows
 ===
 An invitate RNA-seq workshop @ASHG2019
 ---
