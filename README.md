@@ -16,28 +16,30 @@ How to make the most out of this tutorial
 
 To use this tutorial most efficiently, you should follow some rules:
 
-1. Open the notebook in Google Colab (click on the Colab button on the top of the notebook)
+1. Login to your Google account or create one. This is needed to run Colab
+1. Open the notebook in Google Colab (click on the Colab button on the top of the notebook if coming from github)
 1. Save a copy in your personal Google Drive (click on `File -> Save a copy in Drive ...`
 1. Run the `r-env-setup-script.R` part to setup the R environment (takes ~3 minutes)
 1. Have fun learning new skills!
 1. Communicate with your peers in person (most important) or on Slack!
+1. Ask for help on Slack if needed
 
-If you are new to programming in R or to notebooks in general have a look into the [getting started guide](colab_notebooks/Getting_Started_with_Colab_and_R.ipynb).
+If you are new to programming in R or to notebooks in general have a look into the [getting started guide](https://colab.research.google.com/drive/1KCvunOIUTny_moZppDmcJVkt-Zm0jwf5).
 
 ## The notebooks for the workshop
 
-* [Expression Outlier Detection](colab_notebooks/Expression_Outlier_Detection.ipynb)
-* [Aberrant Splicing Detection](TODO)
-* [Mono Allelic Expression Analysis](TODO)
-* [Variant Prioritization](TODO)
+* [Expression Outlier Detection](https://colab.research.google.com/drive/1_U_kK69Zh2_Yl2Ncggw0k1B2jbdmptme)
+* [Aberrant Splicing Detection](https://colab.research.google.com/drive/1kVAsBkoL4oB23n7FmCZ0k_tYDsI_UbOg)
+* [Mono Allelic Expression Analysis (TODO)](TODO)
+* [Variant Prioritization (TODO)](TODO)
 
 ## Links to the presentations used in the workshop
 
-* [Introduction]()
-* [Expression Outlier Detection]()
-* [Mono Allelic Expression Analysis]()
-* [Variant Prioritization]()
-* [Conclusion]()
+* [Introduction (TODO)](TODO)
+* [Expression Outlier Detection (TODO)](TODO)
+* [Mono Allelic Expression Analysis (TODO)](TODO)
+* [Variant Prioritization (TODO)](TODO)
+* [Conclusion (TODO)](TODO)
 
 ## Relevant presentations during ASHG2019
 
