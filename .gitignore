@@ -6,6 +6,7 @@ Data
 tmp
 .Rhistory
 .Rproj.user
+.Rproj
 
 # snakemake/wbuild
 .snakemake

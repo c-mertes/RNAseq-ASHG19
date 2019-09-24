@@ -17,7 +17,7 @@ cadd_dir=/s/genomes/human/hg19/CADD/v1.3
 annoFile="$(dirname ${outDir})/annotation.tsv"
 
 # default variables
-chrOfInt=`echo chr{1..21} chrX`
+chrOfInt=`echo chr{1..22} chrX`
 vcfFileSuffix="phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"
 wes_regions_ensembl="${wes_regions%%.bed}_ensembl.bed"
 
