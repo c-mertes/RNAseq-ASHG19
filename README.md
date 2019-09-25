@@ -28,8 +28,10 @@ If you are new to programming in R or to notebooks in general have a look into t
 
 ## The notebooks for the workshop
 
-* [Expression Outlier Detection](https://colab.research.google.com/drive/1_U_kK69Zh2_Yl2Ncggw0k1B2jbdmptme)
-* [Aberrant Splicing Detection](https://colab.research.google.com/drive/1kVAsBkoL4oB23n7FmCZ0k_tYDsI_UbOg)
+The links to the tutorials will be published some days before the workshop. 
+
+* [Expression Outlier Detection (TODO)](TODO)
+* [Aberrant Splicing Detection (TODO)](TODO)
 * [Mono Allelic Expression Analysis (TODO)](TODO)
 * [Variant Prioritization (TODO)](TODO)
 
@@ -43,7 +45,7 @@ If you are new to programming in R or to notebooks in general have a look into t
 
 ## Relevant presentations during ASHG2019
 
-Please post any relevant sessions, presentations, and posters on Slack or do a PR.
+Please post any relevant sessions, presentations, and posters on Slack (channel \#posters-at-ashg) or do a PR.
 
 * [Session E #63: RNAseq to Augment Variant Interpretation and Disease Diagnosis](https://eventpilotadmin.com/web/page.php?page=Session&project=ASHG19&id=163)
 * [Session #112: Exome and RNA-based Sequencing Methods for Variant Interpretation to Improve Clinical Utility](https://eventpilotadmin.com/web/page.php?page=Session&project=ASHG19&id=212)
