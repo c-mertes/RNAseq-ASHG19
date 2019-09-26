@@ -2,11 +2,12 @@
 #
 #
 
-set -x 
+#set -x
+set -e
 
 # input files/dirs
-outDir="Data/input_data/variants"
-injectionsVcf="${outDir}/injections.vcf.gz"
+outDir="/s/project/ashg19_rnaseq_workschop/Data/input_data/variants"
+injectionsVcf="./Data/input_data/variants/injections.vcf"
 vcfRoot="/s/genomes/human/hg19/1000g/ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502"
 wes_regions="/s/project/mitoMultiOmics/db_data/enrichment_kit_files/agilent_sureselect_human_all_exon_xt_50mb_v5_plus_utrs_probe_targets.bed"
 vep_cache_dir=/opt/modules/i12g/ensembl-vep/94/cachedir 
@@ -22,7 +23,7 @@ vcfFileSuffix="phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"
 wes_regions_ensembl="${wes_regions%%.bed}_ensembl.bed"
 
 # samples of interes
-saOfInt=`cat $annoFile | cut -f5 | sed 's/"//g' | tail  -n +2 | tr '\n'  ',' | sed 's/,$//'`
+saOfInt=`cat $annoFile | cut -f6 | sed 's/"//g' | tail  -n +2 | tr '\n'  ',' | sed 's/,$//'`
 
 # change to correct chromosome names in ENSEMBL 
 cat $wes_regions | sed 's/^chr//' > $wes_regions_ensembl
@@ -51,8 +52,13 @@ done
 # wait for jobs to finish
 wait
 
+# transform injections
+tmp_inj=${outDir}/injections.vcf.gz
+bgzip $injectionsVcf -c > $tmp_inj
+tabix $tmp_inj
+
 # merge all vcf files into one
-bcftools concat $allVcfs $injectionsVcf -o $outDir/1000G_subset_exome.vcf.gz -O z --threads 10
+bcftools concat $allVcfs $tmp_inj -a -o $outDir/1000G_subset_exome.vcf.gz -O z --threads 10
 tabix $outDir/1000G_subset_exome.vcf.gz
 
 # run vep on top
