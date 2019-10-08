@@ -34,11 +34,7 @@ The colab notebook can be found [here](https://colab.research.google.com/drive/1
 
 ## Links to the presentations used in the workshop
 
-* [Introduction (TODO)](TODO)
-* [Expression Outlier Detection (TODO)](TODO)
-* [Mono Allelic Expression Analysis (TODO)](TODO)
-* [Variant Prioritization (TODO)](TODO)
-* [Conclusion (TODO)](TODO)
+The presentations for the workshop can be found [here](https://docs.google.com/presentation/d/1a7KZ6FXwVmGqF-FMAnz0QTk07WgzRWAbFhSNrUBspIQ/edit?usp=sharing).
 
 ## Relevant presentations during ASHG2019
 
