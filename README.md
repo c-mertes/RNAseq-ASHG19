@@ -28,12 +28,9 @@ If you are new to programming in R or to notebooks in general have a look into t
 
 ## The notebooks for the workshop
 
-The links to the tutorials will be published some days before the workshop. 
+The colab notebook can be found [here](https://colab.research.google.com/drive/1OKT32eNIq7Cz839jjqz-GJlvoToPYbib).
 
-* [Expression Outlier Detection (TODO)](TODO)
-* [Aberrant Splicing Detection (TODO)](TODO)
-* [Mono Allelic Expression Analysis (TODO)](TODO)
-* [Variant Prioritization (TODO)](TODO)
+*Just remeber: to enable editing please save it to your private google drive!*
 
 ## Links to the presentations used in the workshop
 
