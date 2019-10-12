@@ -3,12 +3,12 @@ RNA-seq for Mendelian disease diagnostics: A hands-on tutorial through bioinform
 An invitate RNA-seq workshop @ASHG2019
 ---
 
-Welcome to the invitate ASHG RNA-seq workshop!
+Welcome to the ASHG RNA-seq workshop!
 
-We setup a Slack workspace to facilitate communication within the participants as well as the rare disease RNA-seq community in general.
-Please sign up [here](https://join.slack.com/t/rnaseq4rare/shared_invite/enQtNzU1MzEyOTI4NjQ3LTMwNjM1NmZlNWY3Nzk1MjkxYTFkYjBjNjdlNTI3Y2ZkNzJjZTNmZTFiZDVhOTVhMjEwYjRiYzA4Y2QwMzhjNTA). We hope to have vivid conversations and interactions during the workshop but also in the future within this workspace.
+We set up a Slack workspace to facilitate communication among the participants as well as the rare disease RNA-seq community in general.
+Please sign up [here](https://join.slack.com/t/rnaseq4rare/shared_invite/enQtNzU1MzEyOTI4NjQ3LTMwNjM1NmZlNWY3Nzk1MjkxYTFkYjBjNjdlNTI3Y2ZkNzJjZTNmZTFiZDVhOTVhMjEwYjRiYzA4Y2QwMzhjNTA). We hope to have active conversations and interactions during the workshop and also in the future within this workspace.
 
-Through the workshop we will use interactive R notebooks (IR notebooks), which are similar to the well known IPython notebooks.
+During the workshop we will use interactive R notebooks (IR notebooks), which are similar to the well-known IPython notebooks.
 We have for each part of the workshop one notebook. In the end of each notebook there is always a little exercise where you can test your new skills. 
 
 How to make the most out of this tutorial
@@ -16,7 +16,7 @@ How to make the most out of this tutorial
 
 To use this tutorial most efficiently, you should follow some rules:
 
-1. Login to your Google account or create one. This is needed to run Colab
+1. Login to your Google account or create one. This is needed to run Colab.
 1. Open the notebook in Google Colab (click on the Colab button on the top of the notebook if coming from github)
 1. Save a copy in your personal Google Drive (click on `File -> Save a copy in Drive ...`
 1. Run the `r-env-setup-script.R` part to setup the R environment (takes ~3 minutes)
@@ -30,7 +30,7 @@ If you are new to programming in R or to notebooks in general have a look into t
 
 The colab notebook can be found [here](https://colab.research.google.com/drive/1OKT32eNIq7Cz839jjqz-GJlvoToPYbib).
 
-*Just remeber: to enable editing please save it to your private google drive!*
+*Just remember: to enable editing please save it to your private google drive!*
 
 ## Links to the presentations used in the workshop
 
