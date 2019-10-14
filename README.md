@@ -1,6 +1,10 @@
 RNA-seq for Mendelian disease diagnostics: A hands-on tutorial through bioinformatic tools and workflows
 ===
-An invitate RNA-seq workshop @ASHG2019
+
+View the presentations slides [here](https://tinyurl.com/y6bsa6sc).  
+This workshop is accompanied with a [colab notebook](http://tinyurl.com/RNA-ASHG-colab). In order to edit it, please save the notebook to your private Google Drive account.
+
+An RNA-seq workshop @ASHG2019
 ---
 
 Welcome to the ASHG RNA-seq workshop!
@@ -25,16 +29,6 @@ To use this tutorial most efficiently, you should follow some rules:
 1. Ask for help on Slack if needed
 
 If you are new to programming in R or to notebooks in general have a look into the [getting started guide](https://colab.research.google.com/drive/1KCvunOIUTny_moZppDmcJVkt-Zm0jwf5).
-
-## The notebooks for the workshop
-
-The colab notebook can be found [here](https://colab.research.google.com/drive/1OKT32eNIq7Cz839jjqz-GJlvoToPYbib).
-
-*Just remember: to enable editing please save it to your private google drive!*
-
-## Links to the presentations used in the workshop
-
-The presentations for the workshop can be found [here](https://docs.google.com/presentation/d/1a7KZ6FXwVmGqF-FMAnz0QTk07WgzRWAbFhSNrUBspIQ/edit?usp=sharing).
 
 ## Relevant presentations during ASHG2019
 
