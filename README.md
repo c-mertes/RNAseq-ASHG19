@@ -2,7 +2,7 @@ RNA-seq for Mendelian disease diagnostics
 ===
 A hands-on tutorial through bioinformatic tools and workflows
 ---
-@ASHG2019 [presentation](https://tinyurl.com/y6bsa6sc) [colab notebook](http://tinyurl.com/RNA-ASHG-colab)
+@ASHG2019 [presentation](https://tinyurl.com/RNA-ASHG-presentation) [colab notebook](http://tinyurl.com/RNA-ASHG-colab)
 
 Welcome to the ASHG RNA-seq workshop!
 
@@ -28,7 +28,7 @@ To use this tutorial most efficiently, you should follow some rules:
 1. Communicate with your peers in person (most important) or on Slack!
 1. Ask for help on Slack if needed
 
-If you run into any problems, feel free to check out our [FAQ](https://tinyurl.com/y496ph8x).
+If you run into any problems, feel free to check out our [FAQ](https://tinyurl.com/RNA-ASHG-FAQ).
 If you are new to programming in R or to notebooks in general have a look into the [getting started guide](https://colab.research.google.com/drive/1KCvunOIUTny_moZppDmcJVkt-Zm0jwf5).
 
 Relevant presentations during ASHG2019
