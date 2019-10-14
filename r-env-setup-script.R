@@ -29,7 +29,7 @@ downloadGDriveFile(out="r_binaries.tar.gz", id="1-VqZb_Cv63AH8ogWwhSp48DUowzv_GQ
 
 #' Unpack cache locally
 message("Unzipping R package cache")
-system("tar -xzf r_binaries.tar.gz -C /", intern=TRUE)
+system("tar -xzf r_binaries.tar.gz -C / --exclude='*htmltools*'", intern=TRUE)
 
 #' Download count matrix and sample annotation
 message("Retrieve data for tutorials")
