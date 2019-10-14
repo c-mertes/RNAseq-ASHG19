@@ -7,11 +7,6 @@
 #' to run the workshop analysis pipelines.
 #' 
 
-unloadNamespace("IRkernel")
-unloadNamespace("IRdisplay")
-unloadNamespace("repr")
-unloadNamespace("htmltools")
-
 #' install needed ubuntu packages
 message("Update and install needed Ubuntu packages")
 system("apt update")
@@ -54,14 +49,3 @@ system("wget --continue -P mae https://i12g-gagneurweb.in.tum.de/public/workshop
 
 # Options to make plots smaller
 options(repr.plot.width=4, repr.plot.height=4)
-
-unloadNamespace("IRkernel")
-unloadNamespace("IRdisplay")
-unloadNamespace("repr")
-unloadNamespace("htmltools")
-
-suppressPackageStartupMessages({
-    library(IRkernel)
-    library(IRdisplay)
-    library(repr)
-})
