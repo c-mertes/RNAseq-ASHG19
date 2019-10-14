@@ -1,12 +1,14 @@
-RNA-seq for Mendelian disease diagnostics
+ASHG 2019 workshop: <br>RNA-seq for Mendelian disease diagnostics
 ===
 A hands-on tutorial through bioinformatic tools and workflows
 ---
-@ASHG2019 [presentation](https://tinyurl.com/RNA-ASHG-presentation) [colab notebook](http://tinyurl.com/RNA-ASHG-colab)
+
+Link to the workshop presentation: [https://tinyurl.com/RNA-ASHG-presentation](https://tinyurl.com/RNA-ASHG-presentation)
+
+Link to the tutorial (colab notebook): [http://tinyurl.com/RNA-ASHG-colab](http://tinyurl.com/RNA-ASHG-colab)
 
 Welcome to the ASHG RNA-seq workshop!
-
-
+---
 
 We set up a Slack workspace to facilitate communication among the participants as well as the rare disease RNA-seq community in general.
 Please sign up [here](https://tinyurl.com/y3f5koke). We hope to have active conversations and interactions during the workshop and also in the future within this workspace.
