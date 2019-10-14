@@ -33,6 +33,11 @@ system("tar -xzf r_binaries.tar.gz -C /", intern=TRUE)
 
 #' Download count matrix and sample annotation
 message("Retrieve data for tutorials")
+devNull <- sapply(c("splicing", "variants"), dir.create, showWarnings=FALSE)
+downloadGDriveFile(out="variants/1000G_subset_exome.vep.vcf.gz", id="1P604mQgzR2brtWqYGVkd3wgaggJXVeLY")
+downloadGDriveFile(out="splicing/raw_site_counts.tsv.gz", "1ath-pHzLZCJwlcT5_y5S6DClU4yQw8KB")
+downloadGDriveFile(out="splicing/raw_junction_counts.tsv.gz", "1TSwS93TxXZ8Vu1rF_SPqavQRHGEDCdha")
+
 system("wget --continue https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/annotation.tsv")
 system("wget --continue -P outrider https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/outrider/raw_counts.tsv.gz")
 system("wget --continue -P annotations https://i12g-gagneurweb.in.tum.de/public/workshops/RNAseq_ASHG19/input_data/annotations/gencode.v29lift37.annotation.txdb")
