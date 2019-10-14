@@ -2,7 +2,7 @@
 # This script takes the raw OUTRIDER counts and manipulates them to incorporate 
 # the corresponding outliers needed for the workshop
 # 
-library(OUTRIDER)
+devtools::load_all("../OUTRIDER")
 
 # In and output
 input        <- "/s/project/ashg19_rnaseq_workschop/processed_data/v29/counts/all/total_counts.Rds"
@@ -14,6 +14,12 @@ outResZscore <- "/s/public_webshare/public/workshops/RNAseq_ASHG19/input_data/ou
 # load the outrider object
 ods <- OutriderDataSet(readRDS(input))
 
+# 
+# switch to correct sample names
+# 
+colData(ods)[,"sampleID"] <- gsub("\\..*", "", colData(ods)[,"sampleID"])
+colnames(ods) <- colData(ods)[,"sampleID"]
+
 # Insert corrupted counts
 cts <- counts(ods)
 map <- mcols(ods)[,"gene_id"]
@@ -24,9 +30,9 @@ names(map) <- mcols(ods)[,"gene_name"]
 # Many:     NA11918.1.M_111124_3 (MCOLN1)
 # Exercise: HG00103.4.M_120208_3 (TXN2)
 # 
-cts[map["TIMMDC1"], "NA18873.4.M_120208_7"] <- 341
-cts[map["MCOLN1"],  "NA11918.1.M_111124_3"] <- 16
-cts[map["TXN2"],    "HG00103.4.M_120208_3"] <- 852
+cts[map["TIMMDC1"], "NA18873"] <- 341
+cts[map["MCOLN1"],  "NA11918"] <- 16
+cts[map["TXN2"],    "HG00103"] <- 852
 
 
 #'
